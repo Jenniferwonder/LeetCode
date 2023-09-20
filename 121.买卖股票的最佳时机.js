@@ -9,8 +9,23 @@
  * @param {number[]} prices
  * @return {number}
  */
-// 一版：用 if 判断最低价格，也可用 min
+// Review: 20230919
 var maxProfit = function (prices) {
+	// minPrice, currentPrice(prices[i])
+	let maxProfit = 0,
+		minPrice = prices[0];
+	if (prices.length < 2) {
+		return maxProfit;
+	}
+	for (let i = 1; i < prices.length; i++) {
+		minPrice = Math.min(minPrice, prices[i]);
+		maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+	}
+	return maxProfit;
+};
+// @lc code=end
+// 一版：用 if 判断最低价格，也可用 min
+/* var maxProfit = function (prices) {
 	if (prices.length < 2) {
 		return 0;
 	}
@@ -29,8 +44,7 @@ var maxProfit = function (prices) {
 		}
 	}
 	return maxProfit;
-};
-// @lc code=end
+}; */
 
 // 二版：用 min 判断最低价格
 /* var maxProfit = function (prices) {

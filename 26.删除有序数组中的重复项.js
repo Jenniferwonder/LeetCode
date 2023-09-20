@@ -9,8 +9,9 @@
  * @param {number[]} nums
  * @return {number}
  */
-// 二版：双指针，利用快指针遍历数组去重，慢指针追踪唯一元素
+// Review #1: 20230923; Difficult
 var removeDuplicates = function (nums) {
+	// Two-Pointers
 	let slow = 1;
 	for (let fast = 1; fast < nums.length; fast++) {
 		if (nums[fast] !== nums[fast - 1]) {
@@ -21,6 +22,17 @@ var removeDuplicates = function (nums) {
 	return slow;
 };
 // @lc code=end
+// 二版：双指针，利用快指针遍历数组去重，慢指针追踪唯一元素
+/* var removeDuplicates = function (nums) {
+	let slow = 1;
+	for (let fast = 1; fast < nums.length; fast++) {
+		if (nums[fast] !== nums[fast - 1]) {
+			nums[slow] = nums[fast];
+			slow++;
+		}
+	}
+	return slow;
+}; */
 
 // 测试数据
 // removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]);

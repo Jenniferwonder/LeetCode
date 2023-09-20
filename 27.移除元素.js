@@ -10,8 +10,27 @@
  * @param {number} val
  * @return {number}
  */
-// 三版：双指针法
+// Review #1 20230919;
 var removeElement = function (nums, val) {
+	// Two-Pointers
+	let slow = 0;
+	for (let fast = 0; fast < nums.length; fast++) {
+		if (nums[fast] !== val) {
+			nums[slow] = nums[fast];
+			slow++;
+		}
+	}
+	return slow;
+};
+// @lc code=end
+
+// Testing Cases
+// let nums = [3, 2, 2, 3],
+// 	val = 3;
+// removeElement(nums, val);
+
+// 三版：双指针法（左右指针）
+/* var removeElement = function (nums, val) {
 	let left = 0,
 		right = nums.length;
 	while (left < right) {
@@ -25,25 +44,20 @@ var removeElement = function (nums, val) {
 		}
 	}
 	return left;
-};
-// let nums = [3, 2, 2, 3],
-// 	val = 3;
-// removeElement(nums, val);
+}; */
 
-// @lc code=end
-
-// 二版：双指针法
+// 二版：双指针法 (快慢指针)
 /* var removeElement = function (nums, val) {
-	let left = 0;
+	let slow = 0;
 	// 依次对比 val 与数组元素的值
-	for (let right = 0; right < nums.length; right++) {
-		if (nums[right] !== val) {
-			nums[left] = nums[right];
-			left++;
+	for (let fast = 0; fast < nums.length; fast++) {
+		if (nums[fast] !== val) {
+			nums[slow] = nums[fast];
+			slow++;
 		}
 	}
 	// 返回数组长度
-	return left;
+	return slow;
 }; */
 
 // 一版：用数组移除方法 shift/ pop 不管用，因为元素位置未必在首位或末位

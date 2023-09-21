@@ -1,6 +1,6 @@
 ---
 DateStarted: 2023-09-12
-DateModified: 2023-09-12
+DateModified: 2023-09-21
 ---
 %% Begin Waypoint %%
 - **[[LeetCode]]**
@@ -14,10 +14,6 @@ DateModified: 2023-09-12
 	- [[121.买卖股票的最佳时机.js]]
 	- [[217.存在重复元素.js]]
 	- [[1991.找到数组的中间位置.js]]
-	- **Private**
-		- **JS-algorithm-ds-master**
-			- [[add_up_to_faster.js]]
-			- [[add_up_to_slower.js]]
 	- [[README]]
 
 %% End Waypoint %%

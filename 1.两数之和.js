@@ -15,11 +15,11 @@
 var twoSum = function (nums, target) {
 	let dic = {};
 	for (let i = 0; i < nums.length; i++) {
-		// Po1：.hasOwnProperty
+		// LEARN：.hasOwnProperty
 		if (dic.hasOwnProperty(target - nums[i])) {
 			return [dic[target - nums[i]], i];
 		} else {
-			// Po2：对象赋值法
+			// LEARN：对象赋值法
 			dic[nums[i]] = i;
 		}
 	}

@@ -9,21 +9,34 @@
  * @param {number[]} prices
  * @return {number}
  */
-// Review: 20230919
+// R2-20230920; Hard
 var maxProfit = function (prices) {
-	// minPrice, currentPrice(prices[i])
-	let maxProfit = 0,
-		minPrice = prices[0];
-	if (prices.length < 2) {
-		return maxProfit;
-	}
+	// minPrice, maxProfit
+	let minPrice = prices[0],
+		maxProfit = 0;
 	for (let i = 1; i < prices.length; i++) {
 		minPrice = Math.min(minPrice, prices[i]);
 		maxProfit = Math.max(maxProfit, prices[i] - minPrice);
 	}
 	return maxProfit;
 };
+
 // @lc code=end
+// R1-20230919; Hard
+/* var maxProfit = function (prices) {
+	// minPrice, currentPrice(prices[i])
+	let maxProfit = 0,
+		minPrice = prices[0];
+	// if (prices.length < 2) {
+	// 	return maxProfit;
+	// }
+	for (let i = 1; i < prices.length; i++) {
+		minPrice = Math.min(minPrice, prices[i]);
+		maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+	}
+	return maxProfit;
+}; */
+
 // 一版：用 if 判断最低价格，也可用 min
 /* var maxProfit = function (prices) {
 	if (prices.length < 2) {
@@ -48,18 +61,18 @@ var maxProfit = function (prices) {
 
 // 二版：用 min 判断最低价格
 /* var maxProfit = function (prices) {
-  if (prices.length < 2) {
-    return 0;
-  }
-  // 初始化最低价格和最大利润
-  let minPrice = prices[0],
-    maxProfit = 0;
+	if (prices.length < 2) {
+		return 0;
+	}
+	// 初始化最低价格和最大利润
+	let minPrice = prices[0],
+		maxProfit = 0;
 
-  // 遍历价格数组
-  for (let i = 1; i < prices.length; i++) {
-    minPrice = Math.min(minPrice, prices[i]);
-    maxProfit = Math.max(maxProfit, prices[i] - minPrice);
-    }
-  }
-  return maxProfit;
+	// 遍历价格数组
+	for (let i = 1; i < prices.length; i++) {
+		minPrice = Math.min(minPrice, prices[i]);
+		maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+		}
+	}
+	return maxProfit;
 }; */

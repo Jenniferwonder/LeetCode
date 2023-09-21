@@ -9,8 +9,30 @@
  * @param {number[][]} intervals
  * @return {number[][]}
  */
-/* 二版无注释版：T = O(nlogn) S = O(n)*/
+// R1-20230921; Hard
 var merge = function (intervals) {
+	// LEARN: Sort Asc by first number of the intervals without changing the original intervals
+	intervals.slice().sort((a, b) => a[0] - b[0]);
+	// Define output
+	let ans = [];
+	// LEARN: Compare current interval with previous interval
+	let prev = intervals[0];
+	for (const cur of intervals) {
+		const [curStart, curEnd] = cur;
+		const [prevStart, prevEnd] = prev;
+		if (curStart > prevEnd) {
+			ans.push(prev);
+			prev = cur;
+		} else {
+			prev[1] = Math.max(prevEnd, curEnd);
+		}
+	}
+	ans.push(prev);
+	return ans;
+};
+// @lc code=end
+/* 二版无注释版：T = O(nlogn) S = O(n)*/
+/* var merge = function (intervals) {
 	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);
 	let merged = [];
 	let prev = intervals[0];
@@ -26,8 +48,7 @@ var merge = function (intervals) {
 	}
 	merged.push(prev);
 	return merged;
-};
-// @lc code=end
+}; */
 
 /* 二版：--------------------------------------------------------
 1. 不修改原始输入参数的排序

@@ -9,7 +9,48 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
+// R2-20230921; Good
 var threeSum = function (nums) {
+	// Sort Asc
+	nums.sort((a, b) => a - b);
+	// Define output
+	let ans = [];
+
+	// Define first number loop
+	for (let i = 0; i < nums.length; i++) {
+		if (nums[i] > 0) {
+			break;
+		} else if (i > 0 && nums[i] === nums[i - 1]) {
+			continue;
+		}
+		// Define two pointers and target
+		let target = -nums[i],
+			left = i + 1, // NOTE: Notice left is not 1 or 0
+			right = nums.length - 1;
+		while (left < right) {
+			if (nums[left] + nums[right] === target) {
+				ans.push([nums[i], nums[left], nums[right]]); // NOTE: Push an array
+				while (left < right && nums[left] === nums[left + 1]) {
+					left++;
+				}
+				while (left < right && nums[right] === nums[right - 1]) {
+					right--;
+				}
+				left++;
+				right--;
+			} else if (nums[left] + nums[right] > target) {
+				right--;
+			} else {
+				left++;
+			}
+		}
+	}
+	return ans;
+};
+// threeSum([-1, 0, 1, 2, -1]);
+// @lc code=end
+// R1-20230920; Hard
+/* var threeSum = function (nums) {
 	// Sort Asc
 	nums.sort((a, b) => a - b);
 
@@ -48,9 +89,7 @@ var threeSum = function (nums) {
 		}
 	}
 	return ans;
-};
-// threeSum([-1, 0, 1, 2, -1]);
-// @lc code=end
+}; */
 
 // Testing Cases
 // threeSum([-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4]);

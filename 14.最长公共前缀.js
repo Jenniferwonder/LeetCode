@@ -9,13 +9,39 @@
  * @param {string[]} strs
  * @return {string}
  */
+// R1-20230921; Hard
+var longestCommonPrefix = function (strs) {
+	// LEARN: Corner case first
+	if (strs.length === 1) {
+		return strs[0];
+	}
+	// Sort Asc
+	strs.sort();
+	// Define output
+	let ans = "";
+	// Compare the shortest string with the longest
+	let leftStr = strs[0],
+		rightStr = strs[strs.length - 1];
+	for (let i = 0; i < leftStr.length; i++) {
+		if (leftStr[i] === rightStr[i]) {
+			ans += leftStr[i];
+		} else {
+			// LEARN: if no common prefix found, break the loop
+			break;
+		}
+	}
+	return ans;
+};
+// longestCommonPrefix(["dog", "racecar", "car"]);
+// @lc code=end
+
 /* 二版：124/124 cases passed (56 ms)
 Your runtime beats 95.06 % of javascript submissions
 Your memory usage beats 60.74 % of javascript submissions (41.3 MB) 
 Time: O(n*log(n) + m); Space: O(1)*/
-var longestCommonPrefix = function (strs) {
+/* var longestCommonPrefix = function (strs) {
 	if (strs.length === 0) {
-		return "";
+		return strs[0];
 	}
 	// 排序字符串数组，以便在比较时只需考虑第一个和最后一个字符串
 	strs.sort();
@@ -34,9 +60,7 @@ var longestCommonPrefix = function (strs) {
 	}
 
 	return prefix;
-};
-
-// @lc code=end
+}; */
 
 //--------------------------------------
 /* 一版：124/124 cases passed (68 ms)

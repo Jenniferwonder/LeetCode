@@ -60,9 +60,27 @@
  * @return {number}
  */
 // mi = middleIndex
+var searchInsert = function (nums, target) {
+	// Define two-pointers
+	let left = 0,
+		right = nums.length - 1;
+	// Binary search: left <= right
+	while (left <= right) {
+		let mi = Math.trunc((left + right) / 2);
+		if (nums[mi] === target) {
+			return mi;
+		} else if (nums[mi] < target) {
+			left = mi + 1;
+		} else {
+			right = mi - 1;
+		}
+	}
+	return left;
+};
+// @lc code=end
 
 // AC-v2.0 （优化后，耗时击败 26.24%, Memory 击败 95%）
-var searchInsert = function (nums, target) {
+/* var searchInsert = function (nums, target) {
 	let left = 0;
 	let right = nums.length - 1;
 	while (left <= right) {
@@ -76,8 +94,7 @@ var searchInsert = function (nums, target) {
 		}
 	}
 	return left;
-};
-// @lc code=end
+}; */
 
 // AC-v1.0 (代码不简洁，有瑕疵，耗时仅击败 10%, Memory 击败 70%)----------------------------------------------
 /* var searchInsert = function (nums, target) {

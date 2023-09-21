@@ -10,9 +10,26 @@
  * @param {number} target
  * @return {number[]}
  */
+// R1-20230920; Hard
+// Hash table
+var twoSum = function (nums, target) {
+	let dic = {};
+	for (let i = 0; i < nums.length; i++) {
+		// Po1：.hasOwnProperty
+		if (dic.hasOwnProperty(target - nums[i])) {
+			return [dic[target - nums[i]], i];
+		} else {
+			// Po2：对象赋值法
+			dic[nums[i]] = i;
+		}
+	}
+	return [];
+};
+
+// @lc code=end
 
 // 四版(最优)：用对象模拟哈希表，T = O(n), S = O(n)
-var twoSum = function (nums, target) {
+/* var twoSum = function (nums, target) {
 	const numToIndex = {}; // 使用对象模拟哈希表
 
 	for (let i = 0; i < nums.length; i++) {
@@ -26,8 +43,7 @@ var twoSum = function (nums, target) {
 	}
 	return [];
 };
-
-// @lc code=end
+ */
 
 // 三版：用哈希表 new Map()，T = O(n), S = O(n)
 /* var twoSum = function (nums, target) {

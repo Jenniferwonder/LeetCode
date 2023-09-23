@@ -1,7 +1,7 @@
 ---
 database-plugin: basic
 DateStarted: 2023-09-06
-DateModified: 2023-09-21
+DateModified: 2023-09-23
 ---
 
 ```yaml:dbfolder
@@ -248,7 +248,7 @@ columns:
     position: 9
     skipPersist: false
     isHidden: false
-    sortIndex: 2
+    sortIndex: 3
     isSorted: true
     isSortedDesc: false
     config:
@@ -374,12 +374,12 @@ columns:
     position: 5
     skipPersist: false
     isHidden: false
-    sortIndex: 3
+    sortIndex: 0
     isSorted: true
     isSortedDesc: true
     options:
-      - { label: "Good", value: "Good", color: "hsl(46,50%,40%)"}
-      - { label: "Hard", value: "Hard", color: "hsl(17,31%,35%)"}
+      - { label: "Good", value: "Good", color: "hsl(46,61%,55%)"}
+      - { label: "Hard", value: "Hard", color: "hsl(357,40%,60%)"}
     config:
       enable_media_view: true
       link_alias_enabled: true

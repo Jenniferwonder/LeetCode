@@ -9,10 +9,44 @@
  * @param {number[][]} intervals
  * @return {number[][]}
  */
-// R1-20230921; Hard
+// R2-20230922; Hard
 var merge = function (intervals) {
-	// LEARN: Sort Asc by first number of the intervals without changing the original intervals
-	intervals.slice().sort((a, b) => a[0] - b[0]);
+	// NOTE: Corner case? No. All will be covered in the loop
+	/* if (intervals.length === 1) {
+		return intervals[0];
+	} */
+	// NOTE: Sort Asc by the first number of each interval without changing the original array (which need to reasign the value to intervals)
+	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);
+	// NOTE: Define output and get prev interval before the loop
+	let ans = [],
+		prev = intervals[0];
+	// Compare prev and cur interval
+	for (const cur of intervals) {
+		const [curStart, curEnd] = cur;
+		const [prevStart, prevEnd] = prev;
+		if (curStart > prevEnd) {
+			ans.push(prev);
+			prev = cur;
+		} else {
+			prev[1] = Math.max(prevEnd, curEnd); // NOTE: Can't use preEnd here and should only use prev[1], to reasign value outside the loop
+		}
+	}
+	ans.push(prev);
+	return ans;
+};
+// @lc code=end
+
+// Testing Case
+/* let intervals = [
+	[4, 5],
+	[1, 4],
+];
+merge(intervals); */
+
+// R1-20230921; Hard
+/* var merge = function (intervals) {
+	// LEARN: Sort Asc by first number of the intervals without changing the original intervals (which need to reasign the value to intervals)
+	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);
 	// Define output
 	let ans = [];
 	// LEARN: Compare current interval with previous interval
@@ -29,8 +63,8 @@ var merge = function (intervals) {
 	}
 	ans.push(prev);
 	return ans;
-};
-// @lc code=end
+}; */
+
 /* 二版无注释版：T = O(nlogn) S = O(n)*/
 /* var merge = function (intervals) {
 	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);

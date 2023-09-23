@@ -3,14 +3,38 @@
  *
  * [14] 最长公共前缀
  */
-
 // @lc code=start
 /**
  * @param {string[]} strs
  * @return {string}
  */
-// R1-20230921; Hard
+// R2-20230922; Hard
 var longestCommonPrefix = function (strs) {
+	// Corner case first
+	if (strs.length === 1) {
+		return strs[0];
+	}
+	// Sort Asc
+	strs.sort();
+	// NOTE: Define ans as an empty string, not an empty array
+	let ans = "";
+	// NOTE: Get the string before enter the loop
+	let leftStr = strs[0],
+		rightStr = strs[strs.length - 1];
+	// NOTE: Loop to compare the left shortest string with the right longest string, not looping the strs array
+	for (let i = 0; i < strs.length; i++) {
+		if (leftStr[i] === rightStr[i]) {
+			ans += leftStr[i];
+		} else {
+			break; // Break the loop when no common prefix found
+		}
+	}
+	return ans;
+};
+// longestCommonPrefix(["dog", "racecar", "car"]);
+// @lc code=end
+// R1-20230921; Hard
+/* var longestCommonPrefix = function (strs) {
 	// LEARN: Corner case first
 	if (strs.length === 1) {
 		return strs[0];
@@ -31,9 +55,7 @@ var longestCommonPrefix = function (strs) {
 		}
 	}
 	return ans;
-};
-// longestCommonPrefix(["dog", "racecar", "car"]);
-// @lc code=end
+}; */
 
 /* 二版：124/124 cases passed (56 ms)
 Your runtime beats 95.06 % of javascript submissions

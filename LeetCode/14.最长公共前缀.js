@@ -8,8 +8,33 @@
  * @param {string[]} strs
  * @return {string}
  */
-// R2-20230922; Hard
+// R3-20230923; Good
 var longestCommonPrefix = function (strs) {
+	// Corner case first
+	if (strs.length === 1) {
+		return strs[0];
+	}
+	// Sort
+	strs.sort();
+	// Define output
+	let ans = "";
+	// Get the left and right str before the loop
+	let leftStr = strs[0],
+		rightStr = strs[strs.length - 1];
+	// Loop the leftStr to compare
+	for (let i = 0; i < leftStr.length; i++) {
+		if (leftStr[i] === rightStr[i]) {
+			ans += leftStr[i];
+		} else {
+			break;
+		}
+	}
+	return ans;
+};
+// longestCommonPrefix(["dog", "racecar", "car"]);
+// @lc code=end
+// R2-20230922; Hard
+/* var longestCommonPrefix = function (strs) {
 	// Corner case first
 	if (strs.length === 1) {
 		return strs[0];
@@ -22,7 +47,7 @@ var longestCommonPrefix = function (strs) {
 	let leftStr = strs[0],
 		rightStr = strs[strs.length - 1];
 	// NOTE: Loop to compare the left shortest string with the right longest string, not looping the strs array
-	for (let i = 0; i < strs.length; i++) {
+	for (let i = 0; i < leftStr.length; i++) {
 		if (leftStr[i] === rightStr[i]) {
 			ans += leftStr[i];
 		} else {
@@ -30,9 +55,7 @@ var longestCommonPrefix = function (strs) {
 		}
 	}
 	return ans;
-};
-// longestCommonPrefix(["dog", "racecar", "car"]);
-// @lc code=end
+}; */
 // R1-20230921; Hard
 /* var longestCommonPrefix = function (strs) {
 	// LEARN: Corner case first

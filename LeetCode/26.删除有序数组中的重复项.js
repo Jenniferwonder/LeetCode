@@ -9,8 +9,22 @@
  * @param {number[]} nums
  * @return {number}
  */
-// R3-20230922; Hard
+// R4-20230923; Good
 var removeDuplicates = function (nums) {
+	// Define slow pointer (storing the length) before the loop
+	let slow = 1;
+	// Loop
+	for (let fast = 1; fast < nums.length; fast++) {
+		if (nums[fast] !== nums[fast - 1]) {
+			nums[slow] = nums[fast];
+			slow++;
+		}
+	}
+	return slow;
+};
+// @lc code=end
+// R3-20230922; Hard
+/* var removeDuplicates = function (nums) {
 	// Define slow and fast pointers
 	// NOTE: Assign the shortest nums length to slow
 	let slow = 1;
@@ -23,8 +37,7 @@ var removeDuplicates = function (nums) {
 		}
 	}
 	return slow;
-};
-// @lc code=end
+}; */
 // R2-20230921; Hard
 /* var removeDuplicates = function (nums) {
 	let slow = 1;

@@ -9,9 +9,22 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-
-// 二版：哈希表
+// R2-20230925; Good
 var containsDuplicate = function (nums) {
+	let dic = {};
+	for (let i = 0; i < nums.length; i++) {
+		if (dic.hasOwnProperty(nums[i])) {
+			return true;
+		} else {
+			dic[nums[i]] = i;
+		}
+	}
+	return false;
+};
+// @lc code=end
+
+// 二版：哈希表 R1-20230921; Good
+/* var containsDuplicate = function (nums) {
 	let dict = {};
 	for (let i = 0; i < nums.length; i++) {
 		if (dict.hasOwnProperty(nums[i])) {
@@ -21,9 +34,7 @@ var containsDuplicate = function (nums) {
 		}
 	}
 	return false;
-};
-// @lc code=end
-
+}; */
 // containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]);
 
 // 一版：includes() 方法，超时

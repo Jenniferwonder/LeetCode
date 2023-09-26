@@ -1,7 +1,7 @@
 ---
 database-plugin: basic
 DateStarted: 2023-09-06
-DateModified: 2023-09-23
+DateModified: 2023-09-26
 ---
 
 ```yaml:dbfolder
@@ -78,6 +78,7 @@ columns:
       - { label: "Greedy", value: "Greedy", color: "hsl(190, 95%, 90%)"}
       - { label: "Math", value: "Math", color: "hsl(275, 95%, 90%)"}
       - { label: "Templates", value: "Templates", color: "hsl(188, 95%, 90%)"}
+      - { label: "Sliding-Window", value: "Sliding-Window", color: "hsl(26,39%,59%)"}
     config:
       enable_media_view: true
       link_alias_enabled: true

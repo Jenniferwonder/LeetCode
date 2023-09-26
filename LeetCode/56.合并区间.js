@@ -9,8 +9,30 @@
  * @param {number[][]} intervals
  * @return {number[][]}
  */
-// R3-20230923; Good
+// R4-20230924; Good
 var merge = function (intervals) {
+	// Corner cases?
+	// Sort
+	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);
+	// Define Output
+	let ans = [],
+		prev = intervals[0];
+	for (let cur of intervals) {
+		const [prevStart, prevEnd] = prev;
+		const [curStart, curEnd] = cur;
+		if (curStart > prevEnd) {
+			ans.push(prev);
+			prev = cur;
+		} else {
+			prev[1] = Math.max(prevEnd, curEnd);
+		}
+	}
+	ans.push(prev);
+	return ans;
+};
+// @lc code=end
+// R3-20230923; Good
+/* var merge = function (intervals) {
 	// Corner cases?
 	// Define output
 	let ans = [];
@@ -30,8 +52,7 @@ var merge = function (intervals) {
 	}
 	ans.push(prev);
 	return ans;
-};
-// @lc code=end
+}; */
 // R2-20230922; Hard
 /* var merge = function (intervals) {
 	// NOTE: Corner case? No. All will be covered in the loop

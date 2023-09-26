@@ -1,0 +1,41 @@
+/*
+ * @lc app=leetcode.cn id=704 lang=javascript
+ *
+ * [704] 二分查找
+ */
+
+// @lc code=start
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+// L1: 20230925 Binary Search T = O(log(n)), S = O(1)
+var search = function (nums, target) {
+	let left = 0,
+		right = nums.length - 1;
+	while (left <= right) {
+		let mi = Math.trunc((left + right) / 2);
+		if (nums[mi] === target) {
+			return mi;
+		} else if (nums[mi] > target) {
+			right = mi - 1;
+		} else {
+			left = mi + 1;
+		}
+	}
+	return -1;
+};
+// search([-1, 0, 3, 5, 9, 12], 12);
+// @lc code=end
+// L1: 20230925 Hash Table T = O(n), S = O(n)
+/* var search = function (nums, target) {
+	let dic = {};
+	for (let i = 0; i < nums.length; i++) {
+		dic[nums[i]] = i;
+		if (dic.hasOwnProperty(target)) {
+			return dic[target];
+		}
+	}
+	return -1;
+}; */

@@ -10,9 +10,22 @@
  * @param {number} target
  * @return {number[]}
  */
+// R2-20230925; Good
+var twoSum = function (nums, target) {
+	let dic = {};
+	for (let i = 0; i < nums.length; i++) {
+		if (dic.hasOwnProperty(target - nums[i])) {
+			return [dic[target - nums[i]], i];
+		} else {
+			dic[nums[i]] = i;
+		}
+	}
+	return [];
+};
+// @lc code=end
 // R1-20230920; Hard
 // Hash table
-var twoSum = function (nums, target) {
+/* var twoSum = function (nums, target) {
 	let dic = {};
 	for (let i = 0; i < nums.length; i++) {
 		// LEARN：.hasOwnProperty
@@ -24,9 +37,7 @@ var twoSum = function (nums, target) {
 		}
 	}
 	return [];
-};
-
-// @lc code=end
+}; */
 
 // 四版(最优)：用对象模拟哈希表，T = O(n), S = O(n)
 /* var twoSum = function (nums, target) {

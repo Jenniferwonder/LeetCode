@@ -1,7 +1,7 @@
 ---
 database-plugin: basic
 DateStarted: 2023-09-06
-DateModified: 2023-09-26
+DateModified: 2023-10-01
 ---
 
 ```yaml:dbfolder
@@ -381,6 +381,7 @@ columns:
     options:
       - { label: "Good", value: "Good", color: "hsl(46,61%,55%)"}
       - { label: "Hard", value: "Hard", color: "hsl(357,40%,60%)"}
+      - { label: "Easy", value: "Easy", color: "hsl(111,26%,39%)"}
     config:
       enable_media_view: true
       link_alias_enabled: true

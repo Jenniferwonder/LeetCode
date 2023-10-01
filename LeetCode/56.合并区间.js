@@ -9,8 +9,47 @@
  * @param {number[][]} intervals
  * @return {number[][]}
  */
-// R4-20230924; Good
+// R6-20231001; Good
 var merge = function (intervals) {
+	// Sort
+	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);
+	// Loop
+	let ans = [],
+		prev = intervals[0];
+	for (let cur of intervals) {
+		const [prevStart, prevEnd] = prev;
+		const [curStart, curEnd] = cur;
+		if (curStart <= prevEnd) {
+			prev[1] = Math.max(prevEnd, curEnd);
+		} else {
+			ans.push(prev); // NOTE: not ans.push(cur)
+			prev = cur; //NOTE: don't forget update prev
+		}
+	}
+	ans.push(prev);
+	return ans;
+};
+// @lc code=end
+// R5-20230927; Good
+/* var merge = function (intervals) {
+	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);
+	let ans = [],
+		prev = intervals[0];
+	for (let cur of intervals) {
+		const [prevStart, prevEnd] = prev;
+		const [curStart, curEnd] = cur;
+		if (curStart > prevEnd) {
+			ans.push(prev);
+			prev = cur;
+		}
+		prev[1] = Math.max(prevEnd, curEnd);
+	}
+	ans.push(prev);
+	return ans;
+}; */
+
+// R4-20230924; Good
+/* var merge = function (intervals) {
 	// Corner cases?
 	// Sort
 	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);
@@ -29,8 +68,7 @@ var merge = function (intervals) {
 	}
 	ans.push(prev);
 	return ans;
-};
-// @lc code=end
+}; */
 // R3-20230923; Good
 /* var merge = function (intervals) {
 	// Corner cases?

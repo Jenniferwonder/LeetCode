@@ -9,8 +9,19 @@
  * @param {number[]} prices
  * @return {number}
  */
-// R3-20230922; Good
+// R4-20231001; Hard
 var maxProfit = function (prices) {
+	let maxProfit = 0,
+		minPrice = prices[0];
+	for (let cur = 1; cur < prices.length; cur++) {
+		minPrice = Math.min(minPrice, prices[cur]);
+		maxProfit = Math.max(maxProfit, prices[cur] - minPrice);
+	}
+	return maxProfit;
+};
+// @lc code=end
+// R3-20230922; Good
+/* var maxProfit = function (prices) {
 	// minPrice, maxProfit
 	let minPrice = prices[0],
 		maxProfit = 0;
@@ -19,8 +30,7 @@ var maxProfit = function (prices) {
 		maxProfit = Math.max(maxProfit, prices[i] - minPrice);
 	}
 	return maxProfit;
-};
-// @lc code=end
+}; */
 
 // Testing Cases
 // maxProfit([7, 1, 5, 3, 6, 4]);

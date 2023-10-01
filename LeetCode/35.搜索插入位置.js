@@ -59,8 +59,26 @@
  * @param {number} target
  * @return {number}
  */
-// mi = middleIndex
+// R1-20231001; Good
 var searchInsert = function (nums, target) {
+	let left = 0,
+		right = nums.length - 1;
+	while (left <= right) {
+		mi = Math.trunc((left + right) / 2);
+		if (nums[mi] === target) {
+			return mi;
+		} else if (nums[mi] < target) {
+			left = mi + 1;
+		} else {
+			right = mi - 1;
+		}
+	}
+	return left;
+};
+// @lc code=end
+// L1-230904 Good
+// mi = middleIndex
+/* var searchInsert = function (nums, target) {
 	// Define two-pointers
 	let left = 0,
 		right = nums.length - 1;
@@ -76,8 +94,7 @@ var searchInsert = function (nums, target) {
 		}
 	}
 	return left;
-};
-// @lc code=end
+}; */
 
 // AC-v2.0 （优化后，耗时击败 26.24%, Memory 击败 95%）
 /* var searchInsert = function (nums, target) {

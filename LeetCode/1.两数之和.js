@@ -10,7 +10,7 @@
  * @param {number} target
  * @return {number[]}
  */
-// R2-20230925; Good
+// R3 - 20231127; Medium;
 var twoSum = function (nums, target) {
 	let dic = {};
 	for (let i = 0; i < nums.length; i++) {
@@ -23,6 +23,20 @@ var twoSum = function (nums, target) {
 	return [];
 };
 // @lc code=end
+
+// R2-20230925; Good
+// var twoSum = function (nums, target) {
+// 	let dic = {};
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (dic.hasOwnProperty(target - nums[i])) {
+// 			return [dic[target - nums[i]], i];
+// 		} else {
+// 			dic[nums[i]] = i;
+// 		}
+// 	}
+// 	return [];
+// };
+
 // R1-20230920; Hard
 // Hash table
 /* var twoSum = function (nums, target) {

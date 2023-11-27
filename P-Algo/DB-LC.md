@@ -1,7 +1,7 @@
 ---
 database-plugin: basic
 DateStarted: 2023-09-06
-DateModified: 2023-10-01
+DateModified: 2023-11-27
 ---
 
 ```yaml:dbfolder
@@ -445,6 +445,33 @@ config:
 filters:
   enabled: true
   conditions:
+      - condition: AND
+        disabled: true
+        label: "Easy"
+        color: "hsl(104,91%,82%)"
+        filters:
+        - field: Difficulty
+          operator: CONTAINS
+          value: "Easy"
+          type: select
+      - condition: AND
+        disabled: true
+        label: "Medium"
+        color: "hsl(50,93%,66%)"
+        filters:
+        - field: Difficulty
+          operator: CONTAINS
+          value: "Medium"
+          type: select
+      - condition: AND
+        disabled: true
+        label: "Difficult"
+        color: "hsl(0,100%,75%)"
+        filters:
+        - field: aliases
+          operator: CONTAINS
+          value: "Difficult"
+          type: text
       - condition: AND
         disabled: true
         label: "HashTable"

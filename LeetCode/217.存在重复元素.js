@@ -9,7 +9,7 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-// R2-20230925; Good
+// R3-20231127; Good
 var containsDuplicate = function (nums) {
 	let dic = {};
 	for (let i = 0; i < nums.length; i++) {
@@ -22,6 +22,19 @@ var containsDuplicate = function (nums) {
 	return false;
 };
 // @lc code=end
+
+// R2-20230925; Good
+// var containsDuplicate = function (nums) {
+// 	let dic = {};
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (dic.hasOwnProperty(nums[i])) {
+// 			return true;
+// 		} else {
+// 			dic[nums[i]] = i;
+// 		}
+// 	}
+// 	return false;
+// };
 
 // 二版：哈希表 R1-20230921; Good
 /* var containsDuplicate = function (nums) {

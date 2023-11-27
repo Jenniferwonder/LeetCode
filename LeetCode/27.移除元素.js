@@ -10,11 +10,13 @@
  * @param {number} val
  * @return {number}
  */
-// R3-20231001; Good
+// R4-20231127; Good
 var removeElement = function (nums, val) {
 	let slow = 0;
 	for (let fast = 0; fast < nums.length; fast++) {
-		if (nums[fast] !== val) {
+		if (nums[fast] === val) {
+			continue;
+		} else {
 			nums[slow] = nums[fast];
 			slow++;
 		}
@@ -22,6 +24,17 @@ var removeElement = function (nums, val) {
 	return slow;
 };
 // @lc code=end
+// R3-20231001; Good
+// var removeElement = function (nums, val) {
+// 	let slow = 0;
+// 	for (let fast = 0; fast < nums.length; fast++) {
+// 		if (nums[fast] !== val) {
+// 			nums[slow] = nums[fast];
+// 			slow++;
+// 		}
+// 	}
+// 	return slow;
+// };
 // R2-20230921; Good
 /* var removeElement = function (nums, val) {
 	let slow = 0;

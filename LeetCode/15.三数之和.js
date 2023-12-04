@@ -9,21 +9,20 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-// R6-20231001; Good
+// R7-20231204; Hard
 var threeSum = function (nums) {
-	// Sort
-	nums.sort((a, b) => a - b);
-	// Output
 	let ans = [];
-	// Loop through the first number
+	// Sort Asc
+	nums.sort((a, b) => a - b);
 	for (let i = 0; i < nums.length; i++) {
+		// Corner case
 		if (nums[i] > 0) {
 			break;
 		} else if (i > 0 && nums[i] === nums[i - 1]) {
+			// Remove duplicates
 			continue;
 		}
-		// Define the second and third numbers
-		let left = i + 1, // NOTE: left != 0;
+		let left = i + 1,
 			right = nums.length - 1,
 			target = -nums[i];
 		while (left < right) {
@@ -48,6 +47,43 @@ var threeSum = function (nums) {
 };
 // threeSum([-1, 0, 1, 2, -1]);
 // @lc code=end
+// R6-20231001; Good
+// var threeSum = function (nums) {
+// 	// Sort
+// 	nums.sort((a, b) => a - b);
+// 	// Output
+// 	let ans = [];
+// 	// Loop through the first number
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (nums[i] > 0) {
+// 			break;
+// 		} else if (i > 0 && nums[i] === nums[i - 1]) {
+// 			continue;
+// 		}
+// 		// Define the second and third numbers
+// 		let left = i + 1, // NOTE: left != 0;
+// 			right = nums.length - 1,
+// 			target = -nums[i];
+// 		while (left < right) {
+// 			if (nums[left] + nums[right] === target) {
+// 				ans.push([nums[left], nums[right], nums[i]]);
+// 				while (left < right && nums[left] === nums[left + 1]) {
+// 					left++;
+// 				}
+// 				while (left < right && nums[right] === nums[right - 1]) {
+// 					right--;
+// 				}
+// 				left++;
+// 				right--;
+// 			} else if (nums[left] + nums[right] > target) {
+// 				right--;
+// 			} else {
+// 				left++;
+// 			}
+// 		}
+// 	}
+// 	return ans;
+// };
 // R5-20230927; Good
 /* var threeSum = function (nums) {
 	// Sort

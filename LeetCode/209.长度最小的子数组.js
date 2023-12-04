@@ -10,8 +10,21 @@
  * @param {number[]} nums
  * @return {number}
  */
-// R5-20231129; Hard T = O(n), S = O(1)
-var minSubArrayLen = function (target, nums) {};
+// R5-20231204; Hard T = O(n), S = O(1)
+var minSubArrayLen = function (target, nums) {
+	let start = 0,
+		ans = Infinity,
+		sum = 0;
+	for (let end = 0; end < nums.length; end++) {
+		sum += nums[end];
+		while (sum >= target) {
+			ans = Math.min(ans, end - start + 1);
+			sum -= nums[start];
+			start++;
+		}
+	}
+	return ans === Infinity ? 0 : ans;
+};
 // minSubArrayLen(15, [5, 1, 3, 5, 10, 7, 4, 9, 2, 8]);
 // @lc code=end
 // R4-20231003; Good T = O(n), S = O(1)

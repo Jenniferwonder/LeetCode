@@ -10,8 +10,26 @@
  * @param {number} target
  * @return {number}
  */
-// R4: 20231204; Good; Binary Search T = O(log(n)), S = O(1)
+// R5: 20231208; East; Binary Search T = O(log(n)), S = O(1)
 var search = function (nums, target) {
+	let left = 0,
+		right = nums.length - 1;
+	while (left <= right) {
+		let mid = Math.trunc((left + right) / 2);
+		if (target === nums[mid]) {
+			return mid;
+		} else if (target > nums[mid]) {
+			left = mid + 1;
+		} else {
+			right = mid - 1;
+		}
+	}
+	return -1;
+};
+// search([-1, 0, 3, 5, 9, 12], 12);
+// @lc code=end
+// R4: 20231204; Good; Binary Search T = O(log(n)), S = O(1)
+/* var search = function (nums, target) {
 	let left = 0,
 		right = nums.length - 1;
 	while (left <= right) {
@@ -19,15 +37,13 @@ var search = function (nums, target) {
 		if (nums[mid] === target) {
 			return mid;
 		} else if (nums[mid] > target) {
-			right--;
+			right=mid-1;
 		} else {
-			left++;
+			left=mid+1;
 		}
 	}
 	return -1;
-};
-// search([-1, 0, 3, 5, 9, 12], 12);
-// @lc code=end
+}; */
 // R3: 20231127; Good; Binary Search T = O(log(n)), S = O(1)
 // var search = function (nums, target) {
 // 	let left = 0,

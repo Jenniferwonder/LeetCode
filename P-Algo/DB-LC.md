@@ -1,7 +1,7 @@
 ---
 database-plugin: basic
 DateStarted: 2023-09-06
-DateModified: 2023-11-28
+DateModified: 2023-12-08
 ---
 
 ```yaml:dbfolder
@@ -443,7 +443,7 @@ config:
   enable_footer: false
   implementation: default
 filters:
-  enabled: true
+  enabled: false
   conditions:
       - condition: AND
         disabled: true

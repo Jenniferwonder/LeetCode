@@ -59,8 +59,26 @@
  * @param {number} target
  * @return {number}
  */
-// R2-20231127; Good
+// R3-20231208; Good
 var searchInsert = function (nums, target) {
+	let left = 0,
+		right = nums.length - 1;
+	while (left <= right) {
+		let mid = Math.trunc((left + right) / 2);
+		if (nums[mid] === target) {
+			return mid;
+		} else if (nums[mid] > target) {
+			right = mid - 1;
+		} else {
+			left = mid + 1;
+		}
+	}
+	return left;
+};
+// nums = [1,3,5,6]; target = 2;
+// @lc code=end
+// R2-20231127; Good
+/* var searchInsert = function (nums, target) {
 	let left = 0,
 		right = nums.length - 1;
 	while (left <= right) {
@@ -74,9 +92,7 @@ var searchInsert = function (nums, target) {
 		}
 	}
 	return left;
-};
-// nums = [1,3,5,6]; target = 2;
-// @lc code=end
+}; */
 // R1-20231001; Good
 // var searchInsert = function (nums, target) {
 // 	let left = 0,

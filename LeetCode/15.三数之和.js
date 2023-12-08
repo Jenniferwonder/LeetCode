@@ -9,8 +9,47 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-// R7-20231204; Hard
+// R8-20231208; Hard
 var threeSum = function (nums) {
+	// Sort Asc
+	nums.sort((a, b) => a - b);
+	// Define output
+	let ans = [];
+	for (let i = 0; i < nums.length; i++) {
+		// Define corner cases and remove duplicates
+		if (nums[i] > 0) {
+			break;
+		} else if (i > 0 && nums[i] === nums[i - 1]) {
+			continue;
+		}
+		// Define pointers and target
+		let left = i + 1,
+			right = nums.length - 1,
+			target = -nums[i];
+		while (left < right) {
+			if (nums[left] + nums[right] === target) {
+				ans.push([nums[i], nums[left], nums[right]]);
+				while (left < right && nums[left] === nums[left + 1]) {
+					left++;
+				}
+				while (left < right && nums[right] === nums[right - 1]) {
+					right--;
+				}
+				left++;
+				right--;
+			} else if (nums[left] + nums[right] > target) {
+				right--;
+			} else {
+				left++;
+			}
+		}
+	}
+	return ans;
+};
+// threeSum([-1, 0, 1, 2, -1]);
+// @lc code=end
+// R7-20231204; Hard
+/* var threeSum = function (nums) {
 	let ans = [];
 	// Sort Asc
 	nums.sort((a, b) => a - b);
@@ -44,9 +83,7 @@ var threeSum = function (nums) {
 		}
 	}
 	return ans;
-};
-// threeSum([-1, 0, 1, 2, -1]);
-// @lc code=end
+}; */
 // R6-20231001; Good
 // var threeSum = function (nums) {
 // 	// Sort

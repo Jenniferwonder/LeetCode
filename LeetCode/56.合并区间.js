@@ -9,8 +9,28 @@
  * @param {number[][]} intervals
  * @return {number[][]}
  */
-// R6-20231001; Good
+// R7-20231209; Hard
 var merge = function (intervals) {
+	// Sort intervals
+	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);
+	let ans = [],
+		prev = intervals[0];
+	for (let cur of intervals) {
+		const [prevStart, prevEnd] = prev;
+		const [curStart, curEnd] = cur;
+		if (curStart <= prevEnd) {
+			prev[1] = Math.max(prevEnd, curEnd); // NOTE: not prevEnd
+		} else {
+			ans.push(prev);
+			prev = cur;
+		}
+	}
+	ans.push(prev); // NOTE: don't forget push before return
+	return ans;
+};
+// @lc code=end
+// R6-20231001; Good
+/* var merge = function (intervals) {
 	// Sort
 	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);
 	// Loop
@@ -28,8 +48,7 @@ var merge = function (intervals) {
 	}
 	ans.push(prev);
 	return ans;
-};
-// @lc code=end
+}; */
 // R5-20230927; Good
 /* var merge = function (intervals) {
 	intervals = intervals.slice().sort((a, b) => a[0] - b[0]);

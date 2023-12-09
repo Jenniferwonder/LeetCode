@@ -1,7 +1,7 @@
 ---
 database-plugin: basic
 DateStarted: 2023-09-06
-DateModified: 2023-12-08
+DateModified: 2023-12-09
 ---
 
 ```yaml:dbfolder
@@ -491,7 +491,7 @@ filters:
           value: "Sorting"
           type: tags
       - condition: AND
-        disabled: false
+        disabled: true
         label: "Two-Pointers"
         color: "hsl(28,46%,43%)"
         filters:

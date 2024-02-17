@@ -9,8 +9,21 @@
  * @param {number[]} nums
  * @return {number}
  */
-// R3-20231209; Good
+// R4-20240217; Good
 var findMiddleIndex = function (nums) {
+	let total = nums.reduce((prev, cur) => prev + cur, 0);
+	let totalHalf = 0;
+	for (let i = 0; i < nums.length; i++) {
+		if (totalHalf * 2 + nums[i] === total) {
+			return i;
+		}
+		totalHalf += nums[i];
+	}
+	return -1;
+};
+// @lc code=end
+// R3-20231209; Good
+/* var findMiddleIndex = function (nums) {
 	// Get the sum of whole array values
 	let sum = nums.reduce((prev, cur) => prev + cur, 0);
 	let totalHalf = 0;
@@ -21,8 +34,7 @@ var findMiddleIndex = function (nums) {
 		totalHalf += nums[i];
 	}
 	return -1;
-};
-// @lc code=end
+}; */
 // R2-20230922; Good
 /* var findMiddleIndex = function (nums) {
 	// Sum of all array numbers

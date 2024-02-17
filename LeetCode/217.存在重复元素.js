@@ -9,8 +9,21 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-// R3-20231127; Good
+// R4-20240217; Good
 var containsDuplicate = function (nums) {
+	let dict = {};
+	for (let i = 0; i < nums.length; i++) {
+		if (dict.hasOwnProperty(nums[i])) {
+			return true;
+		} else {
+			dict[nums[i]] = i;
+		}
+	}
+	return false;
+};
+// @lc code=end
+// R3-20231127; Good
+/* var containsDuplicate = function (nums) {
 	let dic = {};
 	for (let i = 0; i < nums.length; i++) {
 		if (dic.hasOwnProperty(nums[i])) {
@@ -20,8 +33,7 @@ var containsDuplicate = function (nums) {
 		}
 	}
 	return false;
-};
-// @lc code=end
+}; */
 
 // R2-20230925; Good
 // var containsDuplicate = function (nums) {

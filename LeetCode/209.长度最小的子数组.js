@@ -10,8 +10,28 @@
  * @param {number[]} nums
  * @return {number}
  */
-// R7-20231209; Good; T = O(n), S = O(1)
+// R8-20240217; Good; T = O(n), S = O(1)
 var minSubArrayLen = function (target, nums) {
+	let start = 0,sum=0, length=Infinity;
+	// Sort Asc
+	// nums.sort((a,b)=>a-b);
+	for (let end = 0; end < nums.length; end++) {
+		sum += nums[end];
+		while(sum>=target){
+			length = Math.min(length,end-start+1);
+			sum-=nums[start];
+			start++;
+		}
+		/* if(sum<target){
+			continue;
+		} */
+	}
+	return length===Infinity ? 0 : length;
+}
+// minSubArrayLen(15, [5, 1, 3, 5, 10, 7, 4, 9, 2, 8]);
+// @lc code=end
+// R7-20231209; Good; T = O(n), S = O(1)
+/* var minSubArrayLen = function (target, nums) {
 	let sum = 0, ans = Infinity, start = 0;
 	for (let end = 0; end < nums.length; end++) {
 		sum += nums[end];
@@ -22,9 +42,7 @@ var minSubArrayLen = function (target, nums) {
 		}
 	}
 	return ans===Infinity ? 0 : ans;
-}
-// minSubArrayLen(15, [5, 1, 3, 5, 10, 7, 4, 9, 2, 8]);
-// @lc code=end
+} */
 // R6-20231208; Hard T = O(n), S = O(1)
 /* var minSubArrayLen = function (target, nums) {
 	let ans = Infinity,

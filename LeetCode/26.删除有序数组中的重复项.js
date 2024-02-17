@@ -9,8 +9,22 @@
  * @param {number[]} nums
  * @return {number}
  */
-// R6-20231208; Good
+// R7-20240217; Easy
 var removeDuplicates = function (nums) {
+	let slow = 0;
+	for (let fast = 1; fast < nums.length; fast++) {
+		if (nums[fast] === nums[slow]) {
+			continue;
+		} else {
+			slow++;
+			nums[slow] = nums[fast];
+		}
+	}
+	return slow + 1;
+};
+// @lc code=end
+// R6-20231208; Good
+/* var removeDuplicates = function (nums) {
 	let slow = 1;
 	for (let fast = 1; fast < nums.length; fast++) {
 		if (nums[fast] === nums[fast - 1]) {
@@ -21,8 +35,7 @@ var removeDuplicates = function (nums) {
 		}
 	}
 	return slow;
-};
-// @lc code=end
+}; */
 // R5-20231127; Good
 /* var removeDuplicates = function (nums) {
 	let slow = 1;

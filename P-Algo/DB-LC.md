@@ -21,7 +21,7 @@ columns:
     position: 2
     isHidden: false
     sortIndex: -1
-    width: 521
+    width: 605
     config:
       enable_media_view: true
       link_alias_enabled: true
@@ -527,7 +527,7 @@ filters:
           value: "BinarySearch"
           type: tags
       - condition: AND
-        disabled: true
+        disabled: false
         label: "DP"
         color: "hsl(357,19%,49%)"
         filters:

@@ -8,8 +8,30 @@
  * @param {string[]} strs
  * @return {string}
  */
-// R5-20231209; Hard
+// R6-20240217; Hard
 var longestCommonPrefix = function (strs) {
+	// Corner case
+	if (strs.length === 1) {
+		return strs[0];
+	}
+	let ans = "";
+	strs.sort();
+	let leftStr = strs[0],
+		rightStr = strs[strs.length - 1];
+	for (let i = 0; i < leftStr.length; i++) {
+		if (leftStr[i] === rightStr[i]) {
+			ans += leftStr[i];
+		} else {
+			break;
+		}
+	}
+	return ans;
+};
+longestCommonPrefix(["dog", "racecar", "car"]);
+// longestCommonPrefix(["dog", "carecar", "car"]);
+// @lc code=end
+// R5-20231209; Hard
+/* var longestCommonPrefix = function (strs) {
 	// Corner case
 	if (strs.length === 1) {
 		return strs[0];
@@ -29,9 +51,7 @@ var longestCommonPrefix = function (strs) {
 		}
 	}
 	return ans;
-};
-// longestCommonPrefix(["dog", "carecar", "car"]);
-// @lc code=end
+}; */
 // R4-20230927; Good
 /* var longestCommonPrefix = function (strs) {
 	if (strs.length === 1) {

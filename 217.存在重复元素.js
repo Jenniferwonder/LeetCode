@@ -9,9 +9,9 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-// R4-20240217; Good
-var containsDuplicate = function (nums) {
-	let dict = {};
+// R5-20241018; Good
+var containsDuplicate = (nums) => {
+	const dict = {};
 	for (let i = 0; i < nums.length; i++) {
 		if (dict.hasOwnProperty(nums[i])) {
 			return true;
@@ -22,6 +22,18 @@ var containsDuplicate = function (nums) {
 	return false;
 };
 // @lc code=end
+// R4-20240217; Good
+// var containsDuplicate = function (nums) {
+// 	let dict = {};
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (dict.hasOwnProperty(nums[i])) {
+// 			return true;
+// 		} else {
+// 			dict[nums[i]] = i;
+// 		}
+// 	}
+// 	return false;
+// };
 // R3-20231127; Good
 /* var containsDuplicate = function (nums) {
 	let dic = {};

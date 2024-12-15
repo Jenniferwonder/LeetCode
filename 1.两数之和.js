@@ -10,12 +10,12 @@
  * @param {number} target
  * @return {number[]}
  */
-// R5-20240217; Good;
-var twoSum = function (nums, target) {
-	let dict = {};
+// R6-20241018; Good
+var twoSum = (nums, target) => {
+	const dict = {};
 	for (let i = 0; i < nums.length; i++) {
 		if (dict.hasOwnProperty(target - nums[i])) {
-			return [i, dict[target - nums[i]]];
+			return [dict[target - nums[i]], i];
 		} else {
 			dict[nums[i]] = i;
 		}
@@ -23,6 +23,18 @@ var twoSum = function (nums, target) {
 	return [];
 };
 // @lc code=end
+// R5-20240217; Good;
+// var twoSum = function (nums, target) {
+// 	let dict = {};
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (dict.hasOwnProperty(target - nums[i])) {
+// 			return [i, dict[target - nums[i]]];
+// 		} else {
+// 			dict[nums[i]] = i;
+// 		}
+// 	}
+// 	return [];
+// };
 // R4 - 20231128; Good;
 /* var twoSum = function (nums, target) {
 	let dic = {};

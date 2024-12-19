@@ -5,9 +5,9 @@
 ```javascript
 for (let i = 0; i < nums.length; i++) {
   if () {
-    
+
   } else {
-    
+
   }
 }
 ```
